@@ -15,6 +15,11 @@ i {
 	padding: 15px;
 	color: #fff;
 }
+.navbar-logo-image{
+	margin-right: 10px;
+	height: 32px;
+	width: 32px;
+}
 .navbar-mainbg{
 	background-color: #5161ce;
 	padding: 0px;
