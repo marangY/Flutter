@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>list</title>
+</head>
+<body>
+<h2>list.html</h2>
+<table>
+    <tr>
+        <th>id</th>
+        <th>userEmail</th>
+        <th>userPassword</th>
+        <th>userName</th>
+        <th>상세조회</th>
+        <th>삭제</th>
+    </tr>
+    <!--th:each 는 thymeleaf의 for each 문법-->
+    <tr th:each="user: ${userList}">
+<!--        아래 user.?? 는 list로 받은 타입 dto 클래스의 필드 이름들이다-->
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.userEmail}"></td>
+        <td th:text="${user.userPassword}"></td>
+        <td th:text="${user.userName}"></td>
+        <td>
+            <!-- query string /user?id=1
+                rest api /user/1 -->
+            <!-- "@{|/user/${user.uuid}|}" 는 HTTP 주소창에 위에서 가져온 user라는 데이터 값을 그대로 붙여 넣어주는 문법-->
+            <a th:href="@{|/user/${user.id}|}">조회</a>
+        </td>
+        <td>
+            <a th:href="@{|/user/delete/${user.id}|}">삭제</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
